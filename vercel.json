@@ -11,9 +11,11 @@
     }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "facedetection/wsgi.py"
-    }
-  ]
+    { "src": "/static/(.*)", "dest": "static/$1" },
+    { "src": "/media/(.*)", "dest": "media/$1" },
+    { "src": "/(.*)", "dest": "facedetection/wsgi.py" }
+  ],
+  "env": {
+    "DEBUG": "false"
+  }
 }
