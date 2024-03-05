@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Detection and Color Clustering</title>
+</head>
+<body>
+    <h1>Face Detection and Color Clustering</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Start Face Detection</button>
+    </form>
+    {% if processed_frame %}
+        <h2>Processed Frame</h2>
+        <img src="data:image/jpeg;base64,{{ processed_frame }}" alt="Processed Frame">
+    {% endif %}
+    {% if skin_image %}
+        <h2>Skin Detection Result</h2>
+        <img src="data:image/jpeg;base64,{{ skin_image }}" alt="Skin Detection Result">
+    {% endif %}
+    {% if color_clusters %}
+        <h2>Color Clustering Result</h2>
+        <img src="data:image/jpeg;base64,{{ color_clusters }}" alt="Color Clustering Result">
+    {% endif %}
+</body>
+</html>

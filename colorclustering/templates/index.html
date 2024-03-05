@@ -1,0 +1,96 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Detection and Color Clustering</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Real-Time Face Detection and Color Clustering</h1>
+    <div>
+        <button id="startButton">Start Processing</button>
+        <button id="stopButton">Stop Processing</button>
+    </div>
+    <div id="outputContainer">
+        <div id="processedFrameContainer">
+            <h2>Processed Frame</h2>
+            <img id="processedFrame" src="" alt="Processed Frame">
+        </div>
+        <div id="skinImageContainer">
+            <h2>Skin Detection</h2>
+            <img id="skinImage" src="" alt="Skin Detection">
+        </div>
+        <div id="colorClustersContainer">
+            <h2>Color Clusters</h2>
+            <div id="colorClusters"></div>
+        </div>
+    </div>
+
+    <script>
+        // Add your JavaScript code here
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        const processedFrameImg = document.getElementById('processedFrame');
+        const skinImageImg = document.getElementById('skinImage');
+        const colorClustersContainer = document.getElementById('colorClusters');
+
+        // Function to start processing
+        startButton.addEventListener('click', () => {
+            // Code to start processing
+            // Make AJAX request to start processing
+        });
+
+        // Function to stop processing
+        stopButton.addEventListener('click', () => {
+            // Code to stop processing
+            // Make AJAX request to stop processing
+        });
+
+        // Function to update UI with processed frame and skin image
+        function updateUI(processedFrameBase64, skinImageBase64, colorClusters) {
+            processedFrameImg.src = 'data:image/jpeg;base64,' + processedFrameBase64;
+            skinImageImg.src = 'data:image/jpeg;base64,' + skinImageBase64;
+
+            // Update color clusters
+            colorClustersContainer.innerHTML = '';
+            colorClusters.forEach((cluster, index) => {
+                const colorDiv = document.createElement('div');
+                colorDiv.style.backgroundColor = `rgb(${cluster[0]}, ${cluster[1]}, ${cluster[2]})`;
+                colorDiv.textContent = `Cluster ${index + 1}`;
+                colorClustersContainer.appendChild(colorDiv);
+            });
+        }
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Detection and Color Clustering</title>
+</head>
+<body>
+    <h1>Face Detection and Color Clustering</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Start Face Detection</button>
+    </form>
+    {% if processed_frame %}
+        <h2>Processed Frame</h2>
+        <img src="data:image/jpeg;base64,{{ processed_frame }}" alt="Processed Frame">
+    {% endif %}
+    {% if skin_image %}
+        <h2>Skin Detection Result</h2>
+        <img src="data:image/jpeg;base64,{{ skin_image }}" alt="Skin Detection Result">
+    {% endif %}
+    {% if color_clusters %}
+        <h2>Color Clustering Result</h2>
+        <img src="data:image/jpeg;base64,{{ color_clusters }}" alt="Color Clustering Result">
+    {% endif %}
+</body>
+</html>

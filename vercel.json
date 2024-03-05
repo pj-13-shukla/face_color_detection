@@ -1,0 +1,18 @@
+{
+    "version": 2,
+    "builds": [
+      { "src": "vercel-handler.py", "use": "@vercel/python" }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "vercel-handler.py" }
+    ],
+    "env": {
+      "DJANGO_SETTINGS_MODULE": "facedetection.settings"
+    },
+    "functions": {
+      "vercel-handler": {
+        "runtime": "python3.8"
+      }
+    }
+  }
+  
