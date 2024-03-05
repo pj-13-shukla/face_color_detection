@@ -1,5 +1,5 @@
-Django==3.2.12
-numpy==1.22.0
-opencv-python==4.5.5.62
-scikit-learn==0.24.2
-ultralytics==1.0
+Django
+numpy
+opencv-python
+scikit-learn
+ultralytics
