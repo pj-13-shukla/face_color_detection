@@ -1,18 +1,13 @@
 {
-    "version": 2,
-    "builds": [
-      { "src": "vercel-handler.py", "use": "@vercel/python" }
-    ],
+    "builds": [{
+        "src": "facedetection/wsgi.py",
+        "use": "@vercel/python",
+        "config": {"maxLambdaSize": "15mb", "runtime": "python3.9"}
+    }],
     "routes": [
-      { "src": "/(.*)", "dest": "vercel-handler.py" }
-    ],
-    "env": {
-      "DJANGO_SETTINGS_MODULE": "facedetection.settings"
-    },
-    "functions": {
-      "vercel-handler": {
-        "runtime": "python3.8"
-      }
-    }
-  }
-  
+        {
+            "src":"/(.*)",
+            "dest": "facedetection/wsgi.py"
+        }
+    ]
+}
